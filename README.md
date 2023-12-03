@@ -17,7 +17,7 @@ named for the day (`dayNN.txt`).
 
 ## Stats
 
-Number of answers correct on first submission: -/- (--%)
+Number of answers correct on first submission: 2/2 (100%)
 
 Highest finish for first half: -
 

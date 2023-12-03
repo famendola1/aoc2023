@@ -28,7 +28,7 @@ lein run -b DAY PART
 
 ## [day01.clj](day01.clj)
 
-Day 1 (--/--).
+Day 1 (56042/55358).
 
 ## [day02.clj](day02.clj)
 
