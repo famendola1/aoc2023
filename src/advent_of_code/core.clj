@@ -17,7 +17,7 @@
         sub   (try (requiring-resolve
                     (symbol (format "advent-of-code.day%02d%s/part-%d"
                                     day (if bis "bis" "") part)))
-                   (catch Exception _
+                   (catch Exception e
                      (format "No%s fn found for day %d part %d."
                              (if bis " bis" "") day part)))]
     (cond
