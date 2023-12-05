@@ -30,13 +30,53 @@ lein run -b DAY PART
 
 Day 1 (56042/55358).
 
+### Part 1
+
+For each line, find all numerals using the `\d` regex. The first and last
+numerals found make the digits of the number. Lastly, find the sum.
+
+### Part 2
+
+For each line, find all numerals using a regex that includes the spelling of
+the numbers one to nine. Proceed like Part 1.
+
 ## [day02.clj](day02.clj)
 
 Day 2 (2439/63711).
 
+### Part 1
+
+For each game, we parse it for all the dice draws of that game. The game is
+stored as an assoc containing the id of the game and a list of the draws where
+the draws are stored as an assoc mapping the color to number of dice pulled in
+that color. A draw is "possible" if the number of dice pulled is less than or
+equal its corresponding max. A game is "possible" if every draw is possible.
+
+### Part 2
+
+For each game, we parse it like Part 1. To calculate the minimum set of a game,
+we need the max die drawn for each color in that game. The we multiply those
+values to get the power.
+
 ## [day03.clj](day03.clj)
 
 Day 3 (560670/91622824).
+
+### Part 1
+
+Parse the input into a matrix. Additionally, for each row we parse the locations
+of the numbers using the `re-pos` function in utils. Then we iterate over the
+numbers and check if any of its digits borders a symbol, by checking the 8 cells
+surrounding the digit. If a digit borders a symbol then the number is part
+number.
+
+### Part 2
+
+Parse the input like Part 1. We then iterate over the numbers and search for
+digits that border a "*". If it does, we save the number along with the
+coordinates of the "*". We then group the results by the coordinates of the "*".
+If there are exacly 2 numbers in the grouping then we have a gear and multiply
+the numbers.
 
 ## [day04.clj](day04.clj)
 
