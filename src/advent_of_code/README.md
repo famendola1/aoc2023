@@ -80,7 +80,27 @@ the numbers.
 
 ## [day04.clj](day04.clj)
 
-Day 4 (--/--).
+Day 4 (23750/13261850).
+
+### Part 1
+
+First, we parse each line for all the numbers in that line. By inspecting the
+data (at least my data), we see that there are always 10 winning numbers. So the
+first 10 matched numbers, after the card id (I forgot this at first :/) are the
+winners and the rest are our numbers. We store the winners as a set so that we
+can do quick lookups to filter our numbers with ones that match in the set. We
+we have the matches we count them and decrement by 1. We raise 2 to this number
+to get the score of the card (effectively, `2^(m-1)`, where `m` is the number of
+matches. Finally, we sum all the scores.
+
+### Part 2
+
+Parse each line like Part 1. Then, we count the expansion of the cards as
+described. We start with a map if the card id to a count initialized to one. For
+each card, we count the matches and update the counts of the subsequent cards
+with count of the current card. Initially, I forgot to actually use the count of the
+current card and instead just incremented the counts of the subsequent cards,
+which I had as placeholder. Finally, we sum all these counts.
 
 ## [day05.clj](day05.clj)
 
