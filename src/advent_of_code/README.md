@@ -104,7 +104,29 @@ which I had as placeholder. Finally, we sum all these counts.
 
 ## [day05.clj](day05.clj)
 
-Day 5 (--/--).
+Day 5 (177942185/--).
+
+### Part 1
+
+We start by parsing the input into blocks. The first block is the list of seeds
+and the rest of the blocks are the maps. To parse the seeds, we just parse out
+all longs. To parse the maps, we parse the block into lines and discard the
+first line, which is the name. By inspection of the input data, the maps seem to
+be ordered (i.e. the output of one map is the input to its subsequent map), so
+we don't need the map name. For each entry, we store it as a list of
+`[src dest len]`. These entries are then sorted. Next, we convert all the seeds
+to locations. To so this, we need to iterate over all the maps, in order, and
+thread the results of looking up a value in that map to the next map. To perform
+a map lookup, we find the last entry whose `src` value is less than the given
+value. Once we have the entry, we perform the mapping. If the value is out of
+range of the entry, then we return the value. Otherwise, we compute the
+difference between the value and `src` and add that to `dest`. Once we have all
+the locations, we can find the minimum.
+
+I messed up on the first attempt because I was thinking that the maps were
+formatted as src,dest,len when they were actually dest,src,len.
+
+### Part 2
 
 ## [day06.clj](day06.clj)
 
