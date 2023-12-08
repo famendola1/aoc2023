@@ -38,7 +38,21 @@
        (find-seed-locations)
        (reduce min)))
 
+(defn- adjust-seeds [input]
+  (update input :seeds (partial partition 2)))
+
+(defn- find-all-seed-locations [{:keys [seeds maps]}]
+  (mapcat (fn [[start len]]
+            (let [all-seeds (range start (+ start len))]
+              (find-seed-locations {:seeds all-seeds :maps maps})))
+          seeds))
+
 (defn part-2
   "Day 05 Part 2"
   [input]
-  "Implement this part")
+  (->> input
+       (u/to-blocks)    
+       (parse-maps)
+       (adjust-seeds)
+       (find-all-seed-locations)
+       (reduce min)))

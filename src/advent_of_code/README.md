@@ -130,7 +130,31 @@ formatted as src,dest,len when they were actually dest,src,len.
 
 ## [day06.clj](day06.clj)
 
-Day 6 (--/--).
+Day 6 (840336/41382569).
+
+### Part 1
+
+First, we parse all the races and their records and store them as pairs. For
+each pair, we calculate the number of ways that we can beat the record. For
+every possible "charge time" in a race, we compute the distance that the boat
+will travel with the remaining race time
+`distance = charge_time * (race_time - charge_time)`. Once we have all the
+corresponding distances for each charge time, we filter for the ones that are
+greater than the record and then count them. Finally, we multiply all the ways
+to beat the records across all the races.
+
+### Part 2
+
+We parse the input by removing all non-numbers from each line to create a single
+race time and record pair. At first, I just passed this pair into the
+`num-ways-to-beat-record-function`, but I felt that it took too long and after
+reading the question again I noticed that there is some reflexive properties of
+these calculations (e.g. charging for 1 second and charging for 1 second less
+than the race time, will yield  the same distance travelled). So, all we need to
+do is find the first charge time that will beat the record and then the number
+of ways to beat the record would be the race time + 1 minus 2 times the number
+of previous charge times. This dropped the runtime from 11028ms to 2918ms
+(~74%).
 
 ## [day07.clj](day07.clj)
 
