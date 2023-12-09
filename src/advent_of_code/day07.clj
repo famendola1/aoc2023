@@ -70,15 +70,9 @@
 
 (defn- tiebreak-cards [cards-a cards-b]
   (let [card-pairs (partition 2 (interleave cards-a cards-b))
-        count-cards-a (count-cards cards-a)
-        count-cards-b (count-cards cards-b)
-        high-card-a (last (sort-by count-cards-a (keys count-cards-a)))
-        high-card-b (last (sort-by count-cards-b (keys count-cards-b)))
         to-compare (first (drop-while #(zero? (compare-cards (first %) (second %)))
-                                      card-pairs))]
-    (if (or (= 5 (count (keys count-cards-a))) (= high-card-a high-card-b))
-      (compare-cards (first to-compare) (second to-compare))
-      (compare-cards high-card-a high-card-b))))
+                                      card-pairs))]  
+    (compare-cards (first to-compare) (second to-compare))))
 
 (defn- compare-hands [hand-a hand-b]
   (let [score-a (score-hand hand-a)
