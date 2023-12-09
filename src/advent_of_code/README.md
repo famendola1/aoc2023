@@ -158,7 +158,7 @@ of previous charge times. This dropped the runtime from 11028ms to 2918ms
 
 ## [day07.clj](day07.clj)
 
-Day 7 (--/--).
+Day 7 (248836197/--).
 
 ## [day08.clj](day08.clj)
 
