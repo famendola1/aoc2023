@@ -34,18 +34,6 @@
       (count)
       (dec)))
 
-(defn- unfold-indexed* [f accum prior depth]
-  (cond
-    (empty? prior) accum
-    (zero? depth) (concat accum prior)
-    :else (recur f
-                 (concat accum prior)
-                 (f prior (count accum))
-                 (dec depth))))
-
-(defn unfold-indexed [f]
-  (unfold-indexed* f [] (f) 100000))
-
 (defn- traverse' [network start ends]
   (reduce (fn [nodes inst]
             (let [curr-node (first nodes)]

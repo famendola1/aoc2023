@@ -169,7 +169,7 @@ with the rules defined in the question *face palm*.
 
 ## [day08.clj](day08.clj)
 
-Day 8 (19099/--).
+Day 8 (19099/17099847107071).
 
 ### Part 1
 
@@ -181,7 +181,9 @@ Misunderstood the question.
 
 ## [day09.clj](day09.clj)
 
-Day 9 (--/--).
+Day 9 (1904165718/964).
+
+
 
 ## [day10.clj](day10.clj)
 
