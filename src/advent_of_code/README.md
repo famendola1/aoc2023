@@ -158,19 +158,43 @@ of previous charge times. This dropped the runtime from 11028ms to 2918ms
 
 ## [day07.clj](day07.clj)
 
-Day 7 (--/--).
+Day 7 (248836197/251195607).
+
+### Part 1
+
+### Part 2
+
+I spent way too much time debugging because I was mixing real life poker rules
+with the rules defined in the question *face palm*.
 
 ## [day08.clj](day08.clj)
 
-Day 8 (--/--).
+Day 8 (19099/17099847107071).
+
+### Part 1
+
+Forgot to decrement path count.
+
+## Part 2
+
+Misunderstood the question.
 
 ## [day09.clj](day09.clj)
 
-Day 9 (--/--).
+Day 9 (1904165718/964).
+
 
 ## [day10.clj](day10.clj)
 
-Day 10 (--/--).
+Day 10 (6714/--).
+
+## Part 1
+
+Messed Y coordinates for the bends.
+
+## Part 2
+
+Forgot to treat the "S" as a "|", based input inspection.
 
 ## [day11.clj](day11.clj)
 
