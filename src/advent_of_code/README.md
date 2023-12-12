@@ -184,10 +184,17 @@ Misunderstood the question.
 Day 9 (1904165718/964).
 
 
-
 ## [day10.clj](day10.clj)
 
-Day 10 (--/--).
+Day 10 (6714/--).
+
+## Part 1
+
+Messed Y coordinates for the bends.
+
+## Part 2
+
+Forgot to treat the "S" as a "|", based input inspection.
 
 ## [day11.clj](day11.clj)
 
