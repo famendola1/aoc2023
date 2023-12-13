@@ -198,7 +198,15 @@ Forgot to treat the "S" as a "|", based input inspection.
 
 ## [day11.clj](day11.clj)
 
-Day 11 (--/--).
+Day 11 (9329143/710674907809).
+
+### Part 1
+
+### Part 2
+
+Pretty much the same as Part 1, except for Part 2 Iadded an `expansion-factor`
+parameter to `get-pairwise-distances` and `get-distances` to adjust for the 2
+to 1000000 bump in the expansion.
 
 ## [day12.clj](day12.clj)
 
