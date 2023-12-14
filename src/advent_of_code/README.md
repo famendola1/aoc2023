@@ -210,7 +210,7 @@ to 1000000 bump in the expansion.
 
 ## [day12.clj](day12.clj)
 
-Day 12 (--/--).
+Day 12 (8270/--).
 
 ## [day13.clj](day13.clj)
 
