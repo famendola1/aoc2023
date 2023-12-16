@@ -223,7 +223,11 @@ Use It or Lose It!!!!!
 
 ## [day13.clj](day13.clj)
 
-Day 13 (--/--).
+Day 13 (42974/27587).
+
+## Part 1
+
+Misunderstood the problem at first
 
 ## [day14.clj](day14.clj)
 
