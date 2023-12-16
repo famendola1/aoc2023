@@ -210,7 +210,16 @@ to 1000000 bump in the expansion.
 
 ## [day12.clj](day12.clj)
 
-Day 12 (8270/--).
+Day 12 (8270/204640299929836).
+
+## Part 1
+
+If you use the counting algorithm in Part 2 (with pmap) the runtime drops from
+47021ms to 148ms (99.99%).
+
+## Part 2
+
+Use It or Lose It!!!!!
 
 ## [day13.clj](day13.clj)
 
