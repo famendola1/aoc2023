@@ -198,27 +198,64 @@ Forgot to treat the "S" as a "|", based input inspection.
 
 ## [day11.clj](day11.clj)
 
-Day 11 (--/--).
+Day 11 (9329143/710674907809).
+
+### Part 1
+
+### Part 2
+
+Pretty much the same as Part 1, except for Part 2 Iadded an `expansion-factor`
+parameter to `get-pairwise-distances` and `get-distances` to adjust for the 2
+to 1000000 bump in the expansion.
 
 ## [day12.clj](day12.clj)
 
-Day 12 (--/--).
+Day 12 (8270/204640299929836).
+
+## Part 1
+
+If you use the counting algorithm in Part 2 (with pmap) the runtime drops from
+47021ms to 148ms (99.99%).
+
+## Part 2
+
+Use It or Lose It!!!!!
 
 ## [day13.clj](day13.clj)
 
-Day 13 (--/--).
+Day 13 (42974/27587).
+
+## Part 1
+
+Misunderstood the problem at first
 
 ## [day14.clj](day14.clj)
 
-Day 14 (--/--).
+Day 14 (106186/106390).
+
+### Part 1
+
+### Part 2
+
+Don't try to spin 1000000000 times lol.
 
 ## [day15.clj](day15.clj)
 
-Day 15 (--/--).
+Day 15 (502139/284132).
+
+### Part 1
+
+### Part 2
 
 ## [day16.clj](day16.clj)
 
-Day 16 (--/--).
+Day 16 (7046/7313).
+
+### Part 1
+
+### Part 2
+
+Don't forget that the corner's have two possible beam directions.
 
 ## [day17.clj](day17.clj)
 

@@ -78,3 +78,6 @@
       (= 1 x)           factors
       (zero? (mod x p)) (recur (/ x p) primes (conj factors p))
       :else             (recur x ps factors))))
+
+(defn transpose [matrix]
+  (apply mapv vector matrix))
