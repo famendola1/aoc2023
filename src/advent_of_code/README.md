@@ -231,7 +231,13 @@ Misunderstood the problem at first
 
 ## [day14.clj](day14.clj)
 
-Day 14 (--/--).
+Day 14 (106186/106390).
+
+### Part 1
+
+### Part 2
+
+Don't try to spin 1000000000 times lol.
 
 ## [day15.clj](day15.clj)
 
