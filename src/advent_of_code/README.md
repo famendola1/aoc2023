@@ -243,13 +243,19 @@ Don't try to spin 1000000000 times lol.
 
 Day 15 (502139/284132).
 
-## Part 1
+### Part 1
 
-## Part 2
+### Part 2
 
 ## [day16.clj](day16.clj)
 
-Day 16 (--/--).
+Day 16 (7046/7313).
+
+### Part 1
+
+### Part 2
+
+Don't forget that the corner's have two possible beam directions.
 
 ## [day17.clj](day17.clj)
 
