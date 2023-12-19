@@ -55,7 +55,7 @@
       (if (= target (first curr))
         (heat-loss curr)
         (let [heat-loss' (update-heat-losses city heat-loss limit  max-y max-x curr)
-              curr' (ffirst (apply dissoc heat-loss' (seq visited)))]
+              curr' (some #(if-not (visited (first %)) (first %)) heat-loss')]
           (recur curr'
                  heat-loss'
                  (conj visited curr')))))))
