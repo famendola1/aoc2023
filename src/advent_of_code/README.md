@@ -175,7 +175,7 @@ Day 8 (19099/17099847107071).
 
 Forgot to decrement path count.
 
-## Part 2
+### Part 2
 
 Misunderstood the question.
 
@@ -192,7 +192,7 @@ Day 10 (6714/--).
 
 Messed Y coordinates for the bends.
 
-## Part 2
+### Part 2
 
 Forgot to treat the "S" as a "|", based input inspection.
 
@@ -217,7 +217,7 @@ Day 12 (8270/204640299929836).
 If you use the counting algorithm in Part 2 (with pmap) the runtime drops from
 47021ms to 148ms (99.99%).
 
-## Part 2
+### Part 2
 
 Use It or Lose It!!!!!
 
@@ -225,7 +225,7 @@ Use It or Lose It!!!!!
 
 Day 13 (42974/27587).
 
-## Part 1
+### Part 1
 
 Misunderstood the problem at first
 
@@ -263,7 +263,14 @@ Day 17 (--/--).
 
 ## [day18.clj](day18.clj)
 
-Day 18 (--/--).
+Day 18 (41019/96116995735219).
+
+### Part 1
+
+Shoelace theorem, which I learned about as a hint, simplifies this area
+calculation a lot. 
+
+### Part 2
 
 ## [day19.clj](day19.clj)
 
