@@ -17,7 +17,7 @@ named for the day (`dayNN.txt`).
 
 ## Stats
 
-Number of answers correct on first submission: 24/33 (73%)
+Number of answers correct on first submission: 26/35 (74%)
 
 Percentage would be higher if I realized I could use the sample to test my
 solution before trying it on my input sooner :/

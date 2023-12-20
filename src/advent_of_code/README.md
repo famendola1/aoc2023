@@ -259,7 +259,18 @@ Don't forget that the corner's have two possible beam directions.
 
 ## [day17.clj](day17.clj)
 
-Day 17 (--/--).
+Day 17 (902/1073).
+
+### Part 1
+
+Dijkstra's algorithm
+
+### Part 2
+
+Update `get-neighbors` to include a `min-steps` so we can "jump" to points in
+the grid that are `min-steps` in that direction. When we "jump" we need to
+include the heat loss for all the points that we "jumped" over in the heat loss
+for the point we "jumped" to.
 
 ## [day18.clj](day18.clj)
 
@@ -267,8 +278,8 @@ Day 18 (41019/96116995735219).
 
 ### Part 1
 
-Shoelace theorem, which I learned about as a hint, simplifies this area
-calculation a lot. 
+Shoelace formula and Pick's theorem, which I learned about as a hint, simplifies
+the area calculation a lot. 
 
 ### Part 2
 

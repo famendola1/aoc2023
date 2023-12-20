@@ -11,63 +11,80 @@
        (< y max-y)
        (< x max-x)))
 
-(defn- get-neighbors [[[y x] dir cnt] limit max-y max-x]
+(defn- neighbors [max-y max-x min-steps max-steps [[y x] dir cnt]]
   (filter #(and (in-bounds? (first %) max-y max-x)
-                (<= (last %) limit))
+                (<= (last %) max-steps))
           (condp = dir
             :right [[[y (inc x)] :right (inc cnt)]
-                    [[(dec y) x] :up 1]
-                    [[(inc y) x] :down 1]]
+                    [[(- y min-steps) x] :up min-steps]
+                    [[(+ y min-steps) x] :down min-steps]]
             :left  [[[y (dec x)] :left (inc cnt)]
-                    [[(dec y) x] :up 1]
-                    [[(inc y) x] :down 1]]
+                    [[(- y min-steps) x] :up min-steps]
+                    [[(+ y min-steps) x] :down min-steps]]
             :up    [[[(dec y) x] :up (inc cnt)]
-                    [[y (dec x)] :left 1]
-                    [[y (inc x)] :right 1]]
+                    [[y (- x min-steps)] :left min-steps]
+                    [[y (+ x min-steps)] :right min-steps]]
             :down  [[[(inc y) x] :down (inc cnt)]
-                    [[y (dec x)] :left 1]
-                    [[y (inc x)] :right 1]])))
+                    [[y (- x min-steps)] :left min-steps]
+                    [[y (+ x min-steps)] :right min-steps]]
+            :any [[[y (- x min-steps)] :left min-steps]
+                  [[y (+ x min-steps)] :right min-steps]
+                  [[(- y min-steps) x] :up min-steps]
+                  [[(+ y min-steps) x] :down min-steps]])))
 
-(defn- update-heat-loss [grid curr heat-loss block]  
-  (let [curr-heat-loss (heat-loss curr)
-        block-heat-loss (heat-loss block)
-        new-heat-loss (+ curr-heat-loss (get-in grid (first block)))]
-    (cond (nil? block-heat-loss)
-          [block new-heat-loss]
-          (< new-heat-loss block-heat-loss)
-          [block new-heat-loss]
-          :else [block block-heat-loss])))
+(defn- get-pos-in-between [[y x] dir steps]
+  (map (fn [step]
+         (condp = dir
+           :right [y (- x step)]
+           :left [y (+ x step)]
+           :up [(+ y step) x]
+           :down [(- y step) x]))
+       (range 0 steps)))
 
-(defn- update-neighbors [grid heat-loss neighbors curr]  
-  (into heat-loss
-        (map (partial update-heat-loss grid curr heat-loss) neighbors)))
+(defn- get-heat-loss [city min-steps [pos dir steps]]
+  (if (= min-steps steps)
+    (reduce + (map (partial get-in city) (get-pos-in-between pos dir steps)))
+    (get-in city pos)))
 
-(defn- update-heat-losses [grid heat-loss limit max-y max-x curr]
-  (update-neighbors grid heat-loss (get-neighbors curr limit max-y max-x) curr))
+(defn- get-neighbors [city max-y max-x min-steps max-steps block]
+  (into {}
+        (map #(vector % (get-heat-loss city min-steps %))
+             (neighbors max-y max-x min-steps max-steps block))))
 
-(defn- find-min-heat-loss [start dir limit city]
+(defn map-vals [f m]
+  (reduce #(assoc %1 (first %2) (f (last %2))) {} m))
+
+(defn- remove-keys [pred m]
+  (select-keys m (filter (complement pred) (keys m))))
+
+(defn- dijkstra [start target nbrs]
+  (loop [q (priority-map start 0)
+         res {}]
+    (let [[curr dist] (peek q)]
+      (if (= (first curr) target)
+        dist
+        (let [new-dists (->> (nbrs curr)
+                             (remove-keys res)
+                             (map-vals (partial + dist)))]
+          (recur (merge-with min (pop q) new-dists) (assoc res curr dist)))))))
+
+(defn- find-min-heat-loss [start dir min-steps max-steps city]
   (let [max-y (count city)
         max-x (count (first city))
-        target [(dec max-y) (dec max-x)]]
-    (loop [curr [start dir 0]
-           heat-loss (priority-map [start dir 0] 0)
-           visited #{[start dir 0]}]
-      (if (= target (first curr))
-        (heat-loss curr)
-        (let [heat-loss' (update-heat-losses city heat-loss limit  max-y max-x curr)
-              curr' (some #(if-not (visited (first %)) (first %)) heat-loss')]
-          (recur curr'
-                 heat-loss'
-                 (conj visited curr')))))))
-
+        start' [start dir 0]]
+    (dijkstra start'
+              [(dec max-y) (dec max-x)]
+              (partial get-neighbors city max-y max-x min-steps max-steps))))
 (defn part-1
   "Day 17 Part 1"
   [input]
   (->> input
        (parse-city)
-       (find-min-heat-loss [0 0] :right 3)))
+       (find-min-heat-loss [0 0] :any 1 3)))
 
 (defn part-2
   "Day 17 Part 2"
   [input]
-  "Implement this part")
+  (->> input
+       (parse-city)
+       (find-min-heat-loss [0 0] :any 4 10)))
