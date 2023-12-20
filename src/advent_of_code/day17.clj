@@ -52,7 +52,7 @@
              (neighbors max-y max-x min-steps max-steps block))))
 
 (defn map-vals [f m]
-  (reduce #(assoc %1 (first %2) (f (last %2))) {} m))
+  (reduce #(update %1 %2 f) m (keys m)))
 
 (defn- remove-keys [pred m]
   (select-keys m (filter (complement pred) (keys m))))
