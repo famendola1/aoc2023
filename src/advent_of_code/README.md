@@ -285,7 +285,14 @@ the area calculation a lot.
 
 ## [day19.clj](day19.clj)
 
-Day 19 (--/--).
+Day 19 (492702/--).
+
+### Part 1
+
+Parse the workflows into functions (yay functional programming!!!) that you can
+loop over until you reach an A or R.
+
+### Part 2
 
 ## [day20.clj](day20.clj)
 
