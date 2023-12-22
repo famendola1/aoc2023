@@ -90,3 +90,34 @@
 (defn lcm [a b]
   (/ (* a b)
      (gcd a b)))
+
+(defn- unfold* [f accum prior depth]
+  (cond
+    (empty? prior) accum
+    (zero? depth) (concat accum prior)
+    :else (recur f
+                 (concat accum prior)
+                 (f prior)
+                 (dec depth))))
+
+(defn unfold [f]
+  (unfold* f [] (f) 10000000))
+
+(defn- unfold-indexed* [f accum prior depth]
+  (cond
+    (empty? prior) accum
+    (zero? depth) (concat accum prior)
+    :else (recur f
+                 (concat accum prior)
+                 (f prior (count accum))
+                 (dec depth))))
+
+(defn unfold-indexed [f]
+  (unfold-indexed* f [] (f) 10000000))
+
+(defn in-bounds? [[y x] max-y max-x]
+  (and (>= y 0)
+       (>= x 0)
+       (< y max-y)
+       (< x max-x)))
+
